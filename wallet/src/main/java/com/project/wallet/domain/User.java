@@ -11,6 +11,7 @@ import java.util.Collection;
 @Entity
 public class User {
     @Id
+    @GeneratedValue
     private Long user_id;
     private String name;
 

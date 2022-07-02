@@ -4,6 +4,7 @@ import com.project.wallet.domain.Receipt;
 import com.project.wallet.domain.Wallet;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -53,7 +54,13 @@ public class JpaReceiptRepository implements ReceiptRepository{
     }
 
     public List<Receipt> findByUserId(Long UserId){
-        List<Receipt> result = em.createQuery("select r from Receipt r where r.wallet_id = :UserId", Receipt.class).getResultList();
+        List<Wallet> wallets = em.createQuery("select w from Wallet w where w.user_id = :UserId", Wallet.class).getResultList();
+        List<Receipt> result = new ArrayList<>();
+        for (int i=0; i< wallets.size(); i++){
+            Long WalletId = wallets.get(i).getWallet_id();
+            List<Receipt> temp = em.createQuery("select r from Receipt r where r.wallet_id = :WalletId", Receipt.class).getResultList();
+            result.addAll(temp);
+        }
         return result;
     }
 

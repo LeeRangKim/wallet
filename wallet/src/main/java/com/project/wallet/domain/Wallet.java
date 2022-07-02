@@ -11,6 +11,7 @@ import java.util.Collection;
 @Entity
 public class Wallet {
     @Id
+    @GeneratedValue
     private Long wallet_id;
     private Long user_id;
 

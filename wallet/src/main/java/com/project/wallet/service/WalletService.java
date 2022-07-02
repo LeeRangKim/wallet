@@ -3,14 +3,20 @@ package com.project.wallet.service;
 import com.project.wallet.domain.Receipt;
 import com.project.wallet.domain.Wallet;
 import com.project.wallet.repository.WalletRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@Transactional
 public class WalletService {
 
     private final WalletRepository walletRepository;
 
+    @Autowired
     public WalletService(WalletRepository walletRepository){
         this.walletRepository = walletRepository;
     }

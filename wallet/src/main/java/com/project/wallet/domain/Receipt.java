@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -12,6 +13,7 @@ import java.util.Date;
 @Entity
 public class Receipt {
     @Id
+    @GeneratedValue
     private Long receipt_id;
 
     private Long wallet_id;

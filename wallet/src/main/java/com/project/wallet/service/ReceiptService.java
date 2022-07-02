@@ -2,14 +2,20 @@ package com.project.wallet.service;
 
 import com.project.wallet.domain.Receipt;
 import com.project.wallet.repository.ReceiptRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@Transactional
 public class ReceiptService {
 
     private ReceiptRepository receiptRepository;
 
+    @Autowired
     public ReceiptService(ReceiptRepository receiptRepository){
         this.receiptRepository = receiptRepository;
     }
@@ -27,7 +33,11 @@ public class ReceiptService {
         return receiptRepository.findByReceiptId(receiptId);
     }
 
-    public Optional<Receipt> findReceiptByWalletId(long walletId){
+    public List<Receipt> findReceiptByWalletId(long walletId){
         return receiptRepository.findByWalletId(walletId);
+    }
+
+    public List<Receipt> findReceiptByUserId(long UserId){
+        return receiptRepository.findByUserId(UserId);
     }
 }
