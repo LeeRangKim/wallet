@@ -15,6 +15,6 @@ public class User {
     private Long user_id;
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER)
     private Collection<Wallet> wallets;
 }

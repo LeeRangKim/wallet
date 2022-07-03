@@ -2,6 +2,8 @@ package com.project.wallet.repository;
 
 import com.project.wallet.domain.Receipt;
 import com.project.wallet.domain.Wallet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
@@ -9,8 +11,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class JpaReceiptRepository implements ReceiptRepository{
 
+    @Autowired
     private final EntityManager em;
 
     public JpaReceiptRepository(EntityManager em) {
